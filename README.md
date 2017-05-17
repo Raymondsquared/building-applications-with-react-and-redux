@@ -4,3 +4,7 @@ Building Applications with React and Redux in ES6
 
 ## install
 `yarn install`
+
+
+## start
+`yarn start -s`
