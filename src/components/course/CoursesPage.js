@@ -13,6 +13,7 @@ class CoursesPage extends React.Component {
     // state
     // bind functions
     constructor(props, context) {
+        debugger;
         super(props, context);
 
         this.state = {
@@ -50,6 +51,7 @@ class CoursesPage extends React.Component {
     // render
     // call child functions
     render() {
+        debugger;
         return (
             <div>
               <h1>Courses</h1>
@@ -70,12 +72,14 @@ CoursesPage.propTypes = {
 
 // redux connect related functions
 function mapStateToProps(state, ownProps) {
+    debugger;
     return {
         courses: state.courses
     };
 }
 
 function mapDispacthToProps(dispatch) {
+    debugger;
     return {
         actions: bindActionCreators(courseActions, dispatch)
     // createCourse: bindActionCreators(courseActions.createCourse, dispatch)
