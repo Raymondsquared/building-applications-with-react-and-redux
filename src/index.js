@@ -9,11 +9,14 @@ import { Provider } from 'react-redux';
 import routes from './routes';
 import configureStore from './store/configureStore';
 
+import { loadCourses } from './actions/courseActions';
+
 // Webpack can import css files too!
 import './styles/styles.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const store = configureStore();
+store.dispatch(loadCourses());
 
 render(
   <Provider store={ store }>
