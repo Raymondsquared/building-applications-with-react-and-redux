@@ -21,6 +21,25 @@ export function loadCoursesFailure(error) {
     throw (error);
 }
 
+export function createCourseSuccess(course) {
+    return {
+        type: types.CREATE_COURSES_SUCCESS,
+        course
+    };
+}
+
+export function updateCourseSuccess(course) {
+    return {
+        type: types.UPDATE_COURSES_SUCCESS,
+        course
+    };
+}
+
+export function saveCourseFailure(error) {
+    throw (error);
+}
+
+
 export function loadCourses() {
     return function(dispatch) {
         return courseAPI.getAllCourses()
@@ -31,4 +50,17 @@ export function loadCourses() {
                 dispatch(loadCoursesFailure(error));
             });
     };
+}
+
+// `course` param passed the whole redux store
+// in bigger application, we might want to use `getState` to access the store directly
+export function saveCourse(course) {
+    return function(dispatch, getState) {
+        return courseAPI.saveCourse(course)
+            .then(savedCourse => {
+                course.id ? dispatch(updateCourseSuccess(savedCourse)) : dispatch(createCourseSuccess(savedCourse));
+            }).catch(error => {
+            dispatch(saveCourseFailure(error));
+        });
+    }
 }

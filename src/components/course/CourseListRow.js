@@ -5,30 +5,30 @@ import { Link } from 'react-router';
 // app modules
 
 const CourseListRow = ({course}) => {
-    return (
-        <tr>
-          <td><a href={ course.watchHref } target="_blank">Watch</a></td>
-          <td>
-            <Link to={ '/course' + course.id }>
-            { course.title }
-            </Link>
-          </td>
-          <td>
-            { course.authorId }
-          </td>
-          <td>
-            { course.category }
-          </td>
-          <td>
-            { course.length }
-          </td>
-        </tr>
-        );
+  return (
+    <tr>
+      <td><a href={ course.watchHref } target="_blank">Watch</a></td>
+      <td>
+        <Link to={ '/course/' + course.id }>
+        { course.title }
+        </Link>
+      </td>
+      <td>
+        { course.authorId }
+      </td>
+      <td>
+        { course.category }
+      </td>
+      <td>
+        { course.length }
+      </td>
+    </tr>
+    );
 }
 
 // proptype validations
 CourseListRow.PropTypes = {
-    course: PropTypes.object.isRequired
+  course: PropTypes.object.isRequired
 };
 
 export default CourseListRow;
