@@ -3,7 +3,7 @@ import * as types from './actionTypes';
 
 import courseAPI from '../api/mockCourseApi';
 
-import { beginAjaxCall } from './ajaxStatusActions';
+import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
 
 export function createCourse(course) {
     return {
@@ -64,6 +64,7 @@ export function saveCourse(course) {
             .then(savedCourse => {
                 course.id ? dispatch(updateCourseSuccess(savedCourse)) : dispatch(createCourseSuccess(savedCourse));
             }).catch(error => {
+            dispatch(ajaxCallError(error));
             dispatch(saveCourseFailure(error));
         });
     }
